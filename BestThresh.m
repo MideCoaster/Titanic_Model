@@ -6,8 +6,9 @@ function [bestEpsilon ,bestF1] = BestThresh(yval, pval)
 
   stepsize = (max(pval) - min(pval)) / 1000;
 
-  %F1-SCORE = 2Tp/(2Tp + (Fp+Fn)) = 2PR/P+R. So...
-
+  % F1-SCORE = 2Tp/(2Tp + (Fp+Fn)) = 2PR/P+R. So...
+  % The Above Equation is my derived simplification of the F1-Score equation.
+  
   for epsilon = min(pval):stepsize:max(pval)
       p = (pval>epsilon);
       fpn= (sum(yval~=p)); % Fp + Fn
